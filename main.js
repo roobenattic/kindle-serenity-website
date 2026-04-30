@@ -1,110 +1,91 @@
-// ============================================
-// KINDLE SERENITY — main.js
-// ============================================
+const hamburger = document.querySelector(".hamburger");
+const closeMenu = document.querySelector(".close-menu");
+const mobileMenu = document.querySelector(".nav-mobile-menu");
+const overlay = document.querySelector(".nav-overlay");
 
-document.addEventListener('DOMContentLoaded', () => {
+function openMenu() {
+  mobileMenu?.classList.add("active");
+  overlay?.classList.add("active");
+}
 
-  // ======= NAV SCROLL EFFECT =======
-  const nav = document.querySelector('nav');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-      nav.style.padding = '0.8rem 5%';
-      nav.style.boxShadow = '0 2px 20px rgba(123,59,42,0.08)';
-    } else {
-      nav.style.padding = '1.2rem 5%';
-      nav.style.boxShadow = 'none';
-    }
-  });
+function closeMobileMenu() {
+  mobileMenu?.classList.remove("active");
+  overlay?.classList.remove("active");
+}
 
-  // ======= HAMBURGER MENU =======
-  const hamburger = document.querySelector('.hamburger');
-  const mobileMenu = document.querySelector('.nav-mobile-menu');
-  const overlay = document.querySelector('.nav-overlay');
-  const closeBtn = document.querySelector('.close-menu');
+hamburger?.addEventListener("click", openMenu);
+closeMenu?.addEventListener("click", closeMobileMenu);
+overlay?.addEventListener("click", closeMobileMenu);
 
-  const openMenu = () => {
-    mobileMenu.classList.add('open');
-    overlay.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  };
+document.querySelectorAll(".nav-mobile-menu a").forEach((link) => {
+  link.addEventListener("click", closeMobileMenu);
+});
 
-  const closeMenu = () => {
-    mobileMenu.classList.remove('open');
-    overlay.classList.remove('open');
-    document.body.style.overflow = '';
-  };
+const productButtons = document.querySelectorAll(".product-open");
+const productModal = document.getElementById("productModal");
+const modalClose = document.getElementById("modalClose");
 
-  hamburger?.addEventListener('click', openMenu);
-  closeBtn?.addEventListener('click', closeMenu);
-  overlay?.addEventListener('click', closeMenu);
+const modalImg = document.getElementById("modalImg");
+const modalName = document.getElementById("modalName");
+const modalSize = document.getElementById("modalSize");
+const modalDesc = document.getElementById("modalDesc");
+const modalMade = document.getElementById("modalMade");
+const modalBenefit = document.getElementById("modalBenefit");
+const modalStock = document.getElementById("modalStock");
+const buyButton = document.getElementById("buyButton");
 
-  document.querySelectorAll('.nav-mobile-menu a').forEach(a => {
-    a.addEventListener('click', closeMenu);
-  });
+function openProductModal(product) {
+  const name = product.dataset.name || "Candle";
+  const size = product.dataset.size || "10 oz";
+  const price = product.dataset.price || "19.99";
+  const stock = product.dataset.stock || "true";
+  const link = product.dataset.link || "#";
+  const desc = product.dataset.desc || "";
+  const made = product.dataset.made || "";
+  const benefit = product.dataset.benefit || "";
 
-  // ======= SCROLL ANIMATIONS =======
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => {
-          entry.target.classList.add('visible');
-        }, i * 80);
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12 });
+  modalImg.src = "images/product-main.png";
+  modalImg.alt = `${name} candle`;
 
-  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  modalName.textContent = name;
+  modalSize.textContent = `${size} · $${price}`;
+  modalDesc.textContent = desc;
+  modalMade.textContent = made;
+  modalBenefit.textContent = benefit;
 
-  // ======= SMOOTH SCROLL =======
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-      const target = document.querySelector(a.getAttribute('href'));
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    });
-  });
-
-  // ======= CONTACT FORM =======
-  const form = document.getElementById('contactForm');
-  form?.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const btn = form.querySelector('.btn-submit');
-    btn.textContent = 'Sending...';
-    btn.disabled = true;
-
-    try {
-      // Roobens: replace REPLACE_WITH_YOUR_ID with your Formspree form ID
-      const res = await fetch('https://formspree.io/f/REPLACE_WITH_YOUR_ID', {
-        method: 'POST',
-        body: new FormData(form),
-        headers: { 'Accept': 'application/json' }
-      });
-
-      if (res.ok) {
-        btn.textContent = '✓ Message Sent!';
-        btn.style.background = '#5C8A4A';
-        form.reset();
-        setTimeout(() => {
-          btn.textContent = 'Send Message';
-          btn.style.background = '';
-          btn.disabled = false;
-        }, 4000);
-      } else {
-        throw new Error();
-      }
-    } catch {
-      btn.textContent = 'Try Again';
-      btn.disabled = false;
-    }
-  });
-
-  // ======= TAGLINE DUPLICATION FOR SEAMLESS SCROLL =======
-  const scrollTrack = document.querySelector('.tagline-scroll');
-  if (scrollTrack) {
-    scrollTrack.innerHTML += scrollTrack.innerHTML;
+  if (stock === "false") {
+    modalStock.textContent = "Out of stock — this product is not available right now.";
+    buyButton.style.display = "none";
+  } else {
+    modalStock.textContent = "";
+    buyButton.style.display = "inline-flex";
+    buyButton.textContent = `Buy ${size} — $${price}`;
+    buyButton.href = link;
   }
 
+  productModal.classList.add("active");
+  document.body.style.overflow = "hidden";
+}
+
+function closeProductModal() {
+  productModal.classList.remove("active");
+  document.body.style.overflow = "";
+}
+
+productButtons.forEach((product) => {
+  product.addEventListener("click", () => openProductModal(product));
+});
+
+modalClose?.addEventListener("click", closeProductModal);
+
+productModal?.addEventListener("click", (event) => {
+  if (event.target === productModal) {
+    closeProductModal();
+  }
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && productModal?.classList.contains("active")) {
+    closeProductModal();
+  }
 });
