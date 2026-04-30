@@ -44,7 +44,7 @@ function openProductModal(product) {
   const made = product.dataset.made || "";
   const benefit = product.dataset.benefit || "";
 
-  modalImg.src = "images/product-main.png";
+  modalImg.src = product.querySelector("img").src;
   modalImg.alt = `${name} candle`;
 
   modalName.textContent = name;
