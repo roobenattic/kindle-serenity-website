@@ -289,7 +289,22 @@ section {
 
 /* SERVICES */
 .services {
-  background: var(--off-white);
+  position: relative;
+  background:
+    linear-gradient(
+      rgba(250, 247, 244, 0.88),
+      rgba(250, 247, 244, 0.88)
+    ),
+    url("images/services-bg.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.services-grid,
+.services .section-header {
+  position: relative;
+  z-index: 2;
 }
 
 .services-grid {
