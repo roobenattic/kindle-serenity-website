@@ -927,3 +927,65 @@ footer {
     flex-direction: column;
   }
 }
+
+.testimonial-source {
+  display: block;
+  margin-top: 0.7rem;
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
+.testimonial-disclaimer {
+  max-width: 720px;
+  margin: 2rem auto 0;
+  color: var(--muted);
+  text-align: center;
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+.policy-page {
+  background: var(--off-white);
+  min-height: calc(100vh - 86px);
+}
+
+.policy-wrap {
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.policy-wrap h1 {
+  font-family: "Cormorant Garamond", serif;
+  color: var(--espresso);
+  font-size: clamp(3rem, 5vw, 5rem);
+  line-height: 1;
+  margin-bottom: 2.5rem;
+}
+
+.policy-card {
+  background: #fff;
+  border: 1px solid rgba(196, 149, 106, 0.22);
+  border-radius: 28px;
+  padding: 2.2rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 20px 60px rgba(123, 59, 42, 0.06);
+}
+
+.policy-card h2 {
+  font-family: "Cormorant Garamond", serif;
+  color: var(--espresso);
+  font-size: 2.4rem;
+  margin-bottom: 1rem;
+}
+
+.policy-card h3 {
+  color: var(--espresso);
+  font-size: 1rem;
+  margin: 1.4rem 0 0.4rem;
+}
+
+.policy-card p {
+  color: var(--muted);
+  line-height: 1.8;
+}
