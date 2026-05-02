@@ -373,7 +373,10 @@ section {
   position: relative;
   height: 290px;
   background: var(--cream);
-  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px; /* ← sa balanse foto yo */
 }
 
 .product-img img {
@@ -430,6 +433,8 @@ section {
   text-transform: uppercase;
   letter-spacing: 0.12em;
   font-size: 0.78rem;
+  text-align: center;   /* ← SA A */
+  width: 100%;          /* ← SA A */
 }
 
 .out-text {
