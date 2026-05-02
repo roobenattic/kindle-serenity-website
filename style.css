@@ -903,7 +903,7 @@ footer {
   }
 
   .product-img {
-    height: 2600px;
+    height: 260px;
   }
 
   .product-modal-card {
@@ -1085,7 +1085,7 @@ footer {
 /* FIX: make every product card same size */
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   gap: 1.6rem;
   align-items: stretch;
 }
@@ -1104,7 +1104,7 @@ footer {
 }
 
 .product-img {
-  height: 260px !important;
+  height: 160px !important;
 }
 
 .product-img img {
