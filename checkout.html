@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checkout — Kindle Serenity</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <div class="nav-brand">
+        <span class="brand-name">Kindle Serenity</span>
+        <span class="brand-sub">Wellness & Adornaments</span>
+      </div>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="index.html#shop">Shop</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#contact" class="nav-cta">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main class="checkout-page">
+    <section class="checkout-wrap">
+      <div class="checkout-summary">
+        <span class="eyebrow">Order Request</span>
+        <h1>Complete Your Candle Order</h1>
+        <p>
+          Choose your size and submit your order request. Kindle Serenity will confirm payment and delivery details.
+        </p>
+
+        <div class="order-box">
+          <div>
+            <span>Product</span>
+            <strong id="summaryProduct">Candle</strong>
+          </div>
+
+          <div>
+            <span>Selected Size</span>
+            <strong id="summarySize">Not selected</strong>
+          </div>
+
+          <div>
+            <span>Total</span>
+            <strong id="summaryPrice">$0.00</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form-wrap">
+        <h3>Order Details</h3>
+
+        <form id="checkoutForm" action="https://formspree.io/f/xgodwnzk" method="POST">
+          <input type="hidden" id="productInput" name="product" />
+          <input type="hidden" id="priceInput" name="price" />
+
+          <div class="form-group">
+            <label for="size">Select Size</label>
+            <select id="size" name="size" required>
+              <option value="">Choose a size</option>
+              <option value="8 oz" data-price="14.99">$14.99 — 8 oz</option>
+              <option value="10 oz" data-price="19.99">$19.99 — 10 oz</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" placeholder="Your full name" required />
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="your@email.com" required />
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="(XXX) XXX-XXXX" required />
+          </div>
+
+          <div class="form-group">
+            <label for="delivery">Delivery Option</label>
+            <select id="delivery" name="delivery" required>
+              <option value="">Select an option</option>
+              <option>Pickup in Hyde Park, MA</option>
+              <option>Local delivery</option>
+              <option>Shipping</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="address">Address If Delivery/Shipping</label>
+            <textarea id="address" name="address" placeholder="Street, city, state, ZIP"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Notes Optional</label>
+            <textarea id="message" name="message" placeholder="Any special request?"></textarea>
+          </div>
+
+          <button type="submit" class="btn-submit">Submit Order Request</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const product = params.get("product") || "Candle";
+
+    const productInput = document.getElementById("productInput");
+    const priceInput = document.getElementById("priceInput");
+    const sizeSelect = document.getElementById("size");
+
+    const summaryProduct = document.getElementById("summaryProduct");
+    const summarySize = document.getElementById("summarySize");
+    const summaryPrice = document.getElementById("summaryPrice");
+
+    productInput.value = product;
+    summaryProduct.textContent = product;
+
+    sizeSelect.addEventListener("change", function () {
+      const selectedOption = sizeSelect.options[sizeSelect.selectedIndex];
+      const size = selectedOption.value;
+      const price = selectedOption.dataset.price || "0.00";
+
+      summarySize.textContent = size || "Not selected";
+      summaryPrice.textContent = size ? `$${price}` : "$0.00";
+      priceInput.value = size ? `$${price}` : "";
+    });
+  </script>
+</body>
+</html>
