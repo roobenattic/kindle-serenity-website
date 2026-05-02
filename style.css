@@ -1270,3 +1270,28 @@ footer {
     height: 300px !important;
   }
 }
+/* FORCE ALL PRODUCTS TO MATCH CANDY CANE */
+.product-card:not(:first-child) {
+  width: 100% !important;
+  max-width: 100% !important;
+  grid-column: auto !important;
+  transform: none !important;
+}
+
+.product-card:not(:first-child) .product-img {
+  height: 260px !important;
+  max-height: 260px !important;
+  overflow: hidden !important;
+}
+
+.product-card:not(:first-child) .product-img img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
+}
+
+.product-card:not(:first-child) .product-info {
+  min-height: 150px !important;
+  text-align: center !important;
+}
