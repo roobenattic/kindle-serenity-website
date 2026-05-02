@@ -1208,3 +1208,65 @@ footer {
     height: 320px !important;
   }
 }
+/* FINAL PRODUCT GRID FIX — DESKTOP + MOBILE */
+.products-grid {
+  max-width: 1180px !important;
+  margin: 0 auto 4rem !important;
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  gap: 1.6rem !important;
+}
+
+.product-card,
+.product-card:first-child {
+  width: 100% !important;
+  max-width: 100% !important;
+  grid-column: auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.product-img {
+  width: 100% !important;
+  height: 260px !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+
+.product-img img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
+}
+
+.product-info {
+  min-height: 150px !important;
+  padding: 1.3rem 1rem 1.5rem !important;
+  text-align: center !important;
+}
+
+.product-price {
+  margin-top: auto !important;
+  text-align: center !important;
+}
+
+/* TABLET */
+@media (max-width: 1000px) {
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    max-width: 760px !important;
+  }
+}
+
+/* MOBILE */
+@media (max-width: 760px) {
+  .products-grid {
+    grid-template-columns: 1fr !important;
+    max-width: 430px !important;
+  }
+
+  .product-img {
+    height: 300px !important;
+  }
+}
