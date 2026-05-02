@@ -1082,3 +1082,38 @@ footer {
   color: var(--muted);
   font-size: 0.85rem;
 }
+/* FIX: make every product card same size */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(220px, 1fr));
+  gap: 1.6rem;
+  align-items: stretch;
+}
+
+.product-card {
+  max-width: none !important;
+  width: 100% !important;
+  height: 100%;
+}
+
+.product-card:first-child {
+  grid-column: auto !important;
+  width: 100% !important;
+  max-width: none !important;
+  transform: none !important;
+}
+
+.product-img {
+  height: 300px !important;
+}
+
+.product-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.review-button-wrap {
+  margin: 2rem auto 0;
+  text-align: center;
+}
