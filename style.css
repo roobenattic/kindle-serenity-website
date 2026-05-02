@@ -994,3 +994,91 @@ footer {
   color: var(--muted);
   line-height: 1.8;
 }
+/* FIX PRODUCT GRID + IMAGE BALANCE */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.6rem;
+  align-items: stretch;
+  margin-bottom: 4rem;
+}
+
+.product-card {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-img {
+  height: 300px;
+  width: 100%;
+  padding: 0;
+  background: var(--cream);
+  overflow: hidden;
+}
+
+.product-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.product-info {
+  flex: 1;
+  min-height: 155px;
+  padding: 1.4rem 1rem 1.6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.product-price {
+  margin-top: auto;
+  width: 100%;
+  display: block;
+  text-align: center !important;
+  color: var(--espresso);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.78rem;
+}
+
+/* HIDE OZ BADGES ON PHOTOS */
+.product-badge {
+  display: none !important;
+}
+
+/* KEEP ONLY OUT OF STOCK BADGE */
+.out-badge {
+  display: inline-flex !important;
+}
+
+/* GIVE CUSTOM ORDER BUTTON BREATHING ROOM */
+.shop .btn-primary.fade-up {
+  margin-top: 1rem;
+}
+.review-section {
+  background: var(--off-white);
+  padding: 6rem 6%;
+}
+
+.review-box {
+  max-width: 720px;
+  margin: 0 auto;
+  background: #fff;
+  border: 1px solid rgba(196, 149, 106, 0.22);
+  border-radius: 28px;
+  padding: 2.4rem;
+  box-shadow: 0 25px 70px rgba(123, 59, 42, 0.07);
+}
+
+.review-note {
+  margin-top: 1rem;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.85rem;
+}

@@ -393,6 +393,44 @@
   </p>
 </section>
 
+<section class="review-section" id="leave-review">
+  <div class="section-header">
+    <span class="eyebrow">Leave a Review</span>
+    <h2>Share Your Experience</h2>
+    <p>Your feedback helps other customers feel confident before ordering.</p>
+  </div>
+
+  <form class="review-box" action="https://formspree.io/f/xgodwnzk" method="POST">
+    <div class="form-group">
+      <label>Your Name</label>
+      <input type="text" name="name" required />
+    </div>
+
+    <div class="form-group">
+      <label>Rating</label>
+      <select name="rating" required>
+        <option value="">Choose rating</option>
+        <option>★★★★★</option>
+        <option>★★★★</option>
+        <option>★★★</option>
+        <option>★★</option>
+        <option>★</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Your Review</label>
+      <textarea name="review" required></textarea>
+    </div>
+
+    <button type="submit" class="btn-submit">Submit Review</button>
+
+    <p class="review-note">
+      Reviews are submitted for approval before being posted publicly.
+    </p>
+  </form>
+</section>
+
   <p class="disclaimer">
   Testimonials are based on real customer experiences. Some messages have been translated from their original language for clarity.
 </p>
