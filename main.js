@@ -59,7 +59,7 @@ function openProductModal(product) {
   } else {
     modalStock.textContent = "";
     buyButton.style.display = "inline-flex";
-    buyButton.textContent = "Select Size";
+    buyButton.textContent = "Continue to Checkout";
     buyButton.href = `checkout.html?product=${encodeURIComponent(name)}`;
   }
 
