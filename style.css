@@ -1038,3 +1038,21 @@ footer {
     flex-direction: column;
   }
 }
+/* FINAL CARD SIZE FIX */
+.products-grid {
+  align-items: start;
+}
+
+.product-card {
+  width: 100%;
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+.product-img {
+  height: 280px;
+}
+
+.product-info {
+  min-height: 120px;
+}
